@@ -1,0 +1,1 @@
+../../../CTAssetsPickerController/CTAssetsPickerController/CTAssetsGridViewFooter.h

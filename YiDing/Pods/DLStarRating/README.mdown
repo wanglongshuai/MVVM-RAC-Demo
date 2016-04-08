@@ -1,0 +1,48 @@
+# DLStarRating
+
+A `UIControl` subclass that behaves similarly as the App Store rating control.
+
+Written by [David Linsin](http://dlinsin.github.com), January 2011.
+
+
+## Usage
+
+You find all the sources include two sample images under `DLStarRating`. Add the source folder to your project and use the `DLStarRatingControl` in Interface Builder to setup a default 5 star rating control. 
+
+If you'd like to instantiate it yourself with a custom number of stars use:
+
+	// setup a control with 3 fractional stars at a size of 320x230
+	DLStarRatingControl *ratingControl = [[DLStarRatingControl alloc] initWithFrame:CGRectMake(0, 0, 320, 230) andStars:3 isFractional:YES];
+
+You can set a default value by setting `ratingControl.rating=2.5` and hook up a `DLStarRatingDelegate` to get notified when the user has
+changed the rating. _Note: if you want to use fractional stars, you have to provide images with width [divisible by 10](https://github.com/dlinsin/DLStarRating/issues/9#issuecomment-4438728)._
+
+To customize the stars, simply replace `star.png`/`star@2x.png` and `star_highlighted.png`/`star_highlighted@2x.png` under images.
+
+DLStarView.h lets you customize the area below the stars, detecting touches. Simply change the value of kEdgeInsetBottom to increase the area or make it smaller, in case you have other user interface components below. The default is 20px, which allows to select/deselect the stars, while still being able to see them above your finger.
+
+`DLStarRating` should work with iOS 3.0+, but it has not been tested yet.
+
+
+## Demo
+
+You can open the `DLStarRating` demo project in XCode and run it on your iPhone as well as in the Simulator. There's a DLStarRatingControl hooked up in `DLStarRatingDemo.xib`, as well as in `DLStarRatingDemoViewController`. It also shows how to set a rating value and use `DLStarRatingDelegate`.
+
+<img src="https://raw.github.com/dlinsin/DLStarRating/master/DLStarRating.png" width="320" height="480"/>
+
+
+## Issues and Feature Requests
+
+Please report issues via GitHub's issue tracker.
+
+## ARC
+
+There's an [ARC branch](https://github.com/dlinsin/DLStarRating/tree/4_ARC) which you can use if your App uses the latest&greatest. It'll sooner or later find it's way into master.
+
+## UI Testing
+
+The folder _features_ contains the testing setup needed to [run UI tests with zucchini](https://github.com/dlinsin/DLStarRating/wiki/UI-testing-with-zucchini).
+
+## License
+
+DLStarRating is licensed under the Eclipse Public License. 
