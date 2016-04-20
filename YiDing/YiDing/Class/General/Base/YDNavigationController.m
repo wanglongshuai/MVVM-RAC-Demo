@@ -39,6 +39,11 @@
     return [self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
 }
 
+- (UIViewController *)childViewControllerForStatusBarStyle{
+    
+    return self.topViewController;
+}
+
 /*
 #pragma mark - Navigation
 

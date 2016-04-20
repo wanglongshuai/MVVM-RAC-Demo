@@ -79,8 +79,8 @@
     }
 }
 
-- (BOOL)yd_prefersStatusBarHidden {
-        
+- (BOOL)prefersStatusBarHidden {
+    
     return self.statusBarHidden;
 }
 
@@ -127,10 +127,6 @@
     if (!isExtendLayout) {
         [self initializeSelfVCSetting];
     }
-}
-
-- (BOOL)statusBarHidden {
-    return NO;
 }
 
 - (void)initializeSelfVCSetting {
@@ -241,13 +237,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
