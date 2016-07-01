@@ -29,7 +29,7 @@
     return self;
 }
 
-- (instancetype)initWithViewModel:(id<YDViewProtocol>)viewModel {
+- (instancetype)initWithViewModel:(id<YDViewModelProtocol>)viewModel {
     
     self = [super init];
     if (self) {

@@ -41,7 +41,7 @@
     return viewController;
 }
 
-- (instancetype)initWithViewModel:(id<YDViewControllerProtocol>)viewModel {
+- (instancetype)initWithViewModel:(id<YDViewModelProtocol>)viewModel {
     
     self = [super init];
     if (self) {

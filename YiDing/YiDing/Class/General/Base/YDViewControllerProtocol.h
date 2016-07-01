@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol YDViewProtocol;
+@protocol YDViewModelProtocol;
 
 @protocol YDViewControllerProtocol <NSObject>
 
 @optional
-- (instancetype)initWithViewModel:(id <YDViewProtocol>)viewModel;
+- (instancetype)initWithViewModel:(id <YDViewModelProtocol>)viewModel;
 
 - (void)yd_bindViewModel;
 - (void)yd_addSubviews;
