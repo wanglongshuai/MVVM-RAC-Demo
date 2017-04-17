@@ -42,22 +42,21 @@
     return [super initWithViewModel:viewModel];
 }
 
-- (void)updateConstraints {
-    
-    WS(weakSelf)
-    [self.mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.edges.equalTo(weakSelf);
-    }];
-    [super updateConstraints];
-}
-
 #pragma mark - private
 - (void)yd_setupViews {
     
     [self addSubview:self.mainTableView];
     [self setNeedsUpdateConstraints];
     [self updateConstraintsIfNeeded];
+}
+
+- (void)yd_updateConstraints{
+    WS(weakSelf)
+    [self.mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.edges.equalTo(weakSelf);
+    }];
+    [super updateConstraints];
 }
 
 - (void)yd_bindViewModel {

@@ -10,13 +10,18 @@
 
 @implementation YDView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    YDView *view = [super allocWithZone:zone];
+    
+    @weakify(view)
+    
+    [[view rac_signalForSelector:@selector(updateConstraints)] subscribeNext:^(id x) {
+        @strongify(view)
+        [view yd_updateConstraints];
+    }];
+    
+    return view;
 }
-*/
 
 - (instancetype)init
 {
@@ -40,11 +45,18 @@
     return self;
 }
 
+#pragma mark - YDViewProtocol
 - (void)yd_bindViewModel {
 }
 
 - (void)yd_setupViews {
 }
+
+/**
+ *  更新约束
+ *  一定要在最后调用[super updateConstraints]
+ */
+- (void)yd_updateConstraints {}
 
 - (void)yd_addReturnKeyBoard {
     
