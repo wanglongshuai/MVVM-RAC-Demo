@@ -16,8 +16,23 @@
 
 - (instancetype)initWithViewModel:(id <YDViewModelProtocol>)viewModel;
 
-- (void)yd_bindViewModel;
+/**
+ *  添加控件
+ *  最好最后加上[self setNeedsUpdateConstraints]和[self updateConstraintsIfNeeded]，以防不调用updateConstraints，但是若view的controller已经调用setNeedsUpdateConstraints和updateConstraintsIfNeeded，则这里可以不用加上这些
+ */
 - (void)yd_setupViews;
+
+/**
+ *  更新约束
+ *  一定要在最后调用[super updateConstraints]
+ */
+- (void)yd_updateConstraints;
+
+/**
+ *  绑定
+ */
+- (void)yd_bindViewModel;
+
 - (void)yd_addReturnKeyBoard;
 
 @end

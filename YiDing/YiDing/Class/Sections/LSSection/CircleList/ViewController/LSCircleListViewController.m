@@ -26,11 +26,15 @@
     
 }
 
-#pragma mark - system
-- (void)updateViewConstraints {
-    
+#pragma mark - private
+- (void)yd_addSubviews {    
+    [self.view addSubview:self.mainView];
+    [self.view setNeedsUpdateConstraints];
+    [self.view updateConstraintsIfNeeded];
+}
+
+- (void)yd_updateViewConstraints{
     WS(weakSelf)
-    
     [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.edges.equalTo(weakSelf.view);
@@ -39,10 +43,9 @@
     [super updateViewConstraints];
 }
 
-#pragma mark - private
-- (void)yd_addSubviews {
+- (void)yd_layoutNavigation {
     
-    [self.view addSubview:self.mainView];
+    self.title = @"圈子列表";
 }
 
 - (void)yd_bindViewModel {
@@ -54,11 +57,6 @@
         YDViewController *circleMainVC = [[YDViewController alloc] init];
         [self.navigationController pushViewController:circleMainVC animated:YES];
     }];
-}
-
-- (void)yd_layoutNavigation {
-    
-    self.title = @"圈子列表";
 }
 
 #pragma mark - layzLoad
@@ -86,15 +84,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

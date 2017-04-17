@@ -38,6 +38,11 @@
         [viewController yd_getNewData];
     }];
     
+    [[viewController rac_signalForSelector:@selector(updateViewConstraints)] subscribeNext:^(id x) {
+        @strongify(viewController)
+        [viewController yd_updateViewConstraints];
+    }];
+    
     return viewController;
 }
 
@@ -213,6 +218,7 @@
 #pragma mark - RAC
 /**
  *  添加控件
+ *  最好最后加上[self.view setNeedsUpdateConstraints]和[self.view updateConstraintsIfNeeded]，以防不调用updateViewConstraints
  */
 - (void)yd_addSubviews {}
 
@@ -236,14 +242,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
+/**
+ *  更新约束
+ *  一定要在最后调用[super updateViewConstraints]
  */
+- (void)yd_updateViewConstraints{}
+
 
 @end
